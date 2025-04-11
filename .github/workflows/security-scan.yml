@@ -12,28 +12,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 📥 Checkout Code
-      uses: actions/checkout@v3
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v3
 
-    - name: 🐳 Set up Docker (for Trivy)
-      uses: docker/setup-buildx-action@v2
+      - name: 🐳 Set up Docker (for Trivy)
+        uses: docker/setup-buildx-action@v2
 
-    - name: ⚡ Install Trivy
-      uses: aquasecurity/trivy-action@master
-      with:
-     scan-type: fs
-     ignore-unfixed: true
-     format: table
-     exit-code: 1
-     severity: CRITICAL,HIGH
-     output: trivy-results.txt
+      - name: ⚡ Install Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs
+          ignore-unfixed: true
+          format: table
+          exit-code: 1
+          severity: CRITICAL,HIGH
+          output: trivy-results.txt
 
+      - name: 🔍 Show Trivy Results
+        run: cat trivy-results.txt
 
-    - name: 🔍 Show Trivy Results
-      run: cat trivy-results.txt
-
-    - name: 🔐 Run Gitleaks
-      uses: gitleaks/gitleaks-action@v2
-      with:
-     config-path: ""
-   
+      - name: 🔐 Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          config-path: ""
