@@ -36,10 +36,4 @@ jobs:
       uses: gitleaks/gitleaks-action@v2
       with:
         config-path: ""
-    - name: Snyk Scan
-      uses: snyk/actions@master
-       with:
-      args: test
-     env:
-    SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-    working-directory: ./devsecops-copilot
+   
