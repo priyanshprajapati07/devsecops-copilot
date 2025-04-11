@@ -31,8 +31,7 @@ jobs:
       - name: 🔍 Show Trivy Results
         run: cat trivy-results.txt
       - name: Trivy Scan - Python Requirements
-        run: |
-        trivy fs --vuln-type library --severity CRITICAL,HIGH --exit-code 0 --format table .
+        run: |trivy fs --vuln-type library --severity CRITICAL,HIGH --exit-code 0 --format table .
 
 
       - name: 🔐 Run Gitleaks
